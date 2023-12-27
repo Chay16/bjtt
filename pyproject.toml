@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "bjtt"
+version = "0.1.0"
+description = "Smart BlackJack Game"
+authors = ["Chayan Toufan Tabrizi <chayantt@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+
+[tool.poetry.group.dev.dependencies]
+isort = "^5.13.2"
+black = "^23.12.1"
+mypy = "^1.8.0"
+pytest = "^7.4.3"
+pytest-cov = "^4.1.0"
+pytest-clarity = "^1.0.1"
+flake8 = "^6.1.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

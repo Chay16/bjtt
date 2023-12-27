@@ -1,0 +1,22 @@
+[flake8]
+exclude =
+    .venv
+    dist
+ignore =
+    # E203 whitespace before ":"
+    # flake does not recognize slices, while black applies PEP8 pet peeves correctly
+    # see https://peps.python.org/pep-0008/#pet-peeves , https://black.readthedocs.io/en/stable/the_black_code_style/current_style.html#slices
+    E203
+    # E501: line too long (99 > 79 characters)
+    E501
+    # H101: Use TODO(NAME)
+    H101,
+    # H301: one import per line
+    H301,
+    # H306: imports not in alphabetical order -> inconsistent with how black does it.
+    H306,
+    # W503: "Line break occurred before a binary operator" contradicts modern W504,
+    # cf https://www.flake8rules.com/rules/W503.html vs https://www.flake8rules.com/rules/W504.html
+    W503
+# F401: imported but unused (in __init__.py file to allow module export)
+per-file-ignores = __init__.py:F401
