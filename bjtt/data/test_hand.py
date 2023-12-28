@@ -1,5 +1,5 @@
-from card import Card
-from hand import Hand
+from .card import Card
+from .hand import Hand
 
 
 def test_hand():
@@ -7,8 +7,15 @@ def test_hand():
     assert hand.cards == [Card("2", "H"), Card("K", "H")]
     assert hand.value == 12
     assert hand.split_available is False
+    assert str(hand) == "Hand : 2 of Hearts & K of Hearts"
     hand = Hand(Card("2", "H"), Card("2", "C"))
     assert hand.split_available is True
+    hand = Hand(Card("A", "H"), Card("K", "H"))
+    assert hand.value == 21
+    hand = Hand(Card("A", "H"), Card("2", "H"))
+    assert hand.value == 13
+    hand = Hand(Card("A", "H"), Card("2", "H"), Card("A", "D"))
+    assert hand.value == 14
 
 
 def test_add_card_to_hand():

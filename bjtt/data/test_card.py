@@ -1,5 +1,6 @@
-from card import Card
 from pytest import raises
+
+from .card import Card
 
 
 def test_card():
