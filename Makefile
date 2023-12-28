@@ -13,13 +13,13 @@ install:
 
 lint:
 	@poetry run black --check .
-	@poetry run isort -s .cache/ -s dist/ -s .venv/ -c .
+	@poetry run isort -s .cache/ -s dist/ -s .venv/ -c . --profile black
 	@poetry run flake8
 	@poetry run mypy .
 
 format:
 	@poetry run black .
-	@poetry run isort -s .cache/ -s dist/ -s .venv/ .
+	@poetry run isort -s .cache/ -s dist/ -s .venv/ . --profile black
 
 test:
 	@poetry run pytest --no-header -v
