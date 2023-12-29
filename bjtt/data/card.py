@@ -1,22 +1,27 @@
+Ranks = [
+    "A",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "10",
+    "J",
+    "Q",
+    "K",
+]
+
+Suits = ["S", "H", "D", "C"]
+
+
 class Card:
     def __init__(self, rank: str, suit: str) -> None:
-        if rank not in [
-            "A",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10",
-            "J",
-            "Q",
-            "K",
-        ]:
+        if rank not in Ranks:
             raise ValueError(f"{rank} is not a valid rank")
-        if suit not in ["S", "H", "D", "C"]:
+        if suit not in Suits:
             raise ValueError(f"{suit} is not a valid suit")
         self.rank = rank
         self.suit = suit

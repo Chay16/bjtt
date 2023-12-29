@@ -1,4 +1,4 @@
-from data.card import Card
+from data.card import Card, Ranks
 from data.hand import Hand
 from pytest import raises
 from strategy import (
@@ -27,7 +27,7 @@ def test_pair_splitting():
     hand_3s = Hand(Card("3", "H"), Card("3", "D"))
     hand_2s = Hand(Card("2", "H"), Card("2", "D"))
 
-    for rank in ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"]:
+    for rank in Ranks:
         dealer_upcard = Card(rank, "H")
         assert strategy(hand_aces, dealer_upcard) == "Y"
         assert strategy(hand_head, dealer_upcard) == "N"
@@ -94,7 +94,7 @@ def test_soft_totals():
     ace_9 = Hand(Card("A", "H"), Card("9", "H"))
     bj = Hand(Card("A", "H"), Card("K", "H"))
 
-    for rank in ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"]:
+    for rank in Ranks:
         dealer_upcard = Card(rank, "H")
         assert strategy(ace_9, dealer_upcard) == "S"
         assert strategy(bj, dealer_upcard) == "S"
@@ -154,7 +154,7 @@ def test_hard_totals():
     hand_6 = Hand(Card("4", "H"), Card("2", "H"))
     hand_5 = Hand(Card("3", "H"), Card("2", "H"))
 
-    for rank in ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"]:
+    for rank in Ranks:
         dealer_upcard = Card(rank, "H")
 
         assert strategy(hand_21, dealer_upcard) == "S"
@@ -211,7 +211,7 @@ def test_late_surrender():
     hand_15 = Hand(Card("K", "H"), Card("2", "H"), Card("3", "H"))
     hand_16 = Hand(Card("K", "H"), Card("2", "H"), Card("4", "H"))
 
-    for rank in ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"]:
+    for rank in Ranks:
         dealer_upcard = Card(rank, "H")
         if 9 <= dealer_upcard.value <= 11:
             assert strategy_late_surrender(hand_16, dealer_upcard) is True
