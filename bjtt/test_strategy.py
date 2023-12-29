@@ -29,52 +29,52 @@ def test_pair_splitting():
 
     for rank in Ranks:
         dealer_upcard = Card(rank, "H")
-        assert strategy(hand_aces, dealer_upcard) == "Y"
-        assert strategy(hand_head, dealer_upcard) == "N"
-        assert strategy(hand_8s, dealer_upcard) == "Y"
-        assert strategy(hand_5s, dealer_upcard) == "N"
+        assert strategy_pair_splitting(hand_aces, dealer_upcard) == "Y"
+        assert strategy_pair_splitting(hand_head, dealer_upcard) == "N"
+        assert strategy_pair_splitting(hand_8s, dealer_upcard) == "Y"
+        assert strategy_pair_splitting(hand_5s, dealer_upcard) == "N"
         if Card(rank, "H").value <= 6:
-            assert strategy(hand_9s, dealer_upcard) == "Y"
-            assert strategy(hand_7s, dealer_upcard) == "Y"
+            assert strategy_pair_splitting(hand_9s, dealer_upcard) == "Y"
+            assert strategy_pair_splitting(hand_7s, dealer_upcard) == "Y"
             if rank == "2":
-                assert strategy(hand_6s, dealer_upcard, das=True) == "Y"
-                assert strategy(hand_6s, dealer_upcard, das=False) == "N"
+                assert strategy_pair_splitting(hand_6s, dealer_upcard, das=True) == "Y"
+                assert strategy_pair_splitting(hand_6s, dealer_upcard, das=False) == "N"
             else:
-                assert strategy(hand_6s, dealer_upcard, das=True) == "Y"
+                assert strategy_pair_splitting(hand_6s, dealer_upcard, das=True) == "Y"
             if rank in ["2", "3"]:
-                assert strategy(hand_3s, dealer_upcard, das=True) == "Y"
-                assert strategy(hand_3s, dealer_upcard, das=False) == "N"
-                assert strategy(hand_2s, dealer_upcard, das=True) == "Y"
-                assert strategy(hand_2s, dealer_upcard, das=False) == "N"
+                assert strategy_pair_splitting(hand_3s, dealer_upcard, das=True) == "Y"
+                assert strategy_pair_splitting(hand_3s, dealer_upcard, das=False) == "N"
+                assert strategy_pair_splitting(hand_2s, dealer_upcard, das=True) == "Y"
+                assert strategy_pair_splitting(hand_2s, dealer_upcard, das=False) == "N"
             else:
-                assert strategy(hand_3s, dealer_upcard) == "Y"
-                assert strategy(hand_2s, dealer_upcard) == "Y"
+                assert strategy_pair_splitting(hand_3s, dealer_upcard) == "Y"
+                assert strategy_pair_splitting(hand_2s, dealer_upcard) == "Y"
             if rank in ["2", "3", "4"]:
-                assert strategy(hand_4s, dealer_upcard) == "N"
+                assert strategy_pair_splitting(hand_4s, dealer_upcard) == "N"
             else:
-                assert strategy(hand_4s, dealer_upcard, das=True) == "Y"
-                assert strategy(hand_4s, dealer_upcard, das=False) == "N"
+                assert strategy_pair_splitting(hand_4s, dealer_upcard, das=True) == "Y"
+                assert strategy_pair_splitting(hand_4s, dealer_upcard, das=False) == "N"
         elif rank == "7":
-            assert strategy(hand_9s, dealer_upcard) == "N"
-            assert strategy(hand_7s, dealer_upcard) == "Y"
-            assert strategy(hand_6s, dealer_upcard) == "N"
-            assert strategy(hand_4s, dealer_upcard) == "N"
-            assert strategy(hand_3s, dealer_upcard) == "Y"
-            assert strategy(hand_2s, dealer_upcard) == "Y"
+            assert strategy_pair_splitting(hand_9s, dealer_upcard) == "N"
+            assert strategy_pair_splitting(hand_7s, dealer_upcard) == "Y"
+            assert strategy_pair_splitting(hand_6s, dealer_upcard) == "N"
+            assert strategy_pair_splitting(hand_4s, dealer_upcard) == "N"
+            assert strategy_pair_splitting(hand_3s, dealer_upcard) == "Y"
+            assert strategy_pair_splitting(hand_2s, dealer_upcard) == "Y"
         elif rank in ["8", "9"]:
-            assert strategy(hand_9s, dealer_upcard) == "Y"
-            assert strategy(hand_7s, dealer_upcard) == "N"
-            assert strategy(hand_6s, dealer_upcard) == "N"
-            assert strategy(hand_4s, dealer_upcard) == "N"
-            assert strategy(hand_3s, dealer_upcard) == "N"
-            assert strategy(hand_2s, dealer_upcard) == "N"
+            assert strategy_pair_splitting(hand_9s, dealer_upcard) == "Y"
+            assert strategy_pair_splitting(hand_7s, dealer_upcard) == "N"
+            assert strategy_pair_splitting(hand_6s, dealer_upcard) == "N"
+            assert strategy_pair_splitting(hand_4s, dealer_upcard) == "N"
+            assert strategy_pair_splitting(hand_3s, dealer_upcard) == "N"
+            assert strategy_pair_splitting(hand_2s, dealer_upcard) == "N"
         else:
-            assert strategy(hand_9s, dealer_upcard) == "N"
-            assert strategy(hand_7s, dealer_upcard) == "N"
-            assert strategy(hand_6s, dealer_upcard) == "N"
-            assert strategy(hand_4s, dealer_upcard) == "N"
-            assert strategy(hand_3s, dealer_upcard) == "N"
-            assert strategy(hand_2s, dealer_upcard) == "N"
+            assert strategy_pair_splitting(hand_9s, dealer_upcard) == "N"
+            assert strategy_pair_splitting(hand_7s, dealer_upcard) == "N"
+            assert strategy_pair_splitting(hand_6s, dealer_upcard) == "N"
+            assert strategy_pair_splitting(hand_4s, dealer_upcard) == "N"
+            assert strategy_pair_splitting(hand_3s, dealer_upcard) == "N"
+            assert strategy_pair_splitting(hand_2s, dealer_upcard) == "N"
 
 
 def test_soft_totals():
