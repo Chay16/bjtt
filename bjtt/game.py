@@ -21,22 +21,24 @@ def game(double: Optional[bool] = True, das: Optional[bool] = True):
         splitting = strategy_pair_splitting(player_hand, dealer_upcard, das=das)
         print(f"Splitting : {splitting}")
         if splitting == "Y":
-            player_hands = [Hand(player_hand.cards[0], Card(choice(Ranks), choice(Suits))), Hand(player_hand.cards[1], Card(choice(Ranks), choice(Suits)))]
+            player_hands = [
+                Hand(player_hand.cards[0], Card(choice(Ranks), choice(Suits))),
+                Hand(player_hand.cards[1], Card(choice(Ranks), choice(Suits))),
+            ]
             print("After splitting your hands are")
             for i, hand in enumerate(player_hands):
                 print(f"\tHand-{i+1} {hand.value} : ({hand})")
                 print(
-                    f"\tYour are playing : {strategy(hand, dealer_upcard, double=double, das=das)}"
+                    f"\tYour are playing : {strategy(hand, dealer_upcard, double=double)}"
                 )
         else:
             print(
-                f"Your are playing : {strategy(player_hand, dealer_upcard, double=double, das=das)}"
+                f"Your are playing : {strategy(player_hand, dealer_upcard, double=double)}"
             )
     else:
         print(
-            f"Your are playing : {strategy(player_hand, dealer_upcard, double=double, das=das)}"
+            f"Your are playing : {strategy(player_hand, dealer_upcard, double=double)}"
         )
-
 
 
 if __name__ == "__main__":

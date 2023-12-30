@@ -122,9 +122,7 @@ def strategy_late_surrender(player_hand: Hand, dealer_upcard: Card) -> bool:
 
 
 def strategy(
-    player_hand: Hand,
-    dealer_upcard: Card,
-    double: Optional[bool] = True
+    player_hand: Hand, dealer_upcard: Card, double: Optional[bool] = True
 ) -> str:
     if player_hand.soft:
         return strategy_soft_totals(player_hand, dealer_upcard, double)

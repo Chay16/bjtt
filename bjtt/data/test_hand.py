@@ -30,6 +30,7 @@ def test_compute_value():
     hand_12 = Hand(Card("A", "H"), Card("9", "D"), Card("2", "H"))
     assert hand_12.value == 12 and hand_12.soft is False
 
+
 def test_add_card_to_hand():
     hand = Hand(Card("2", "H"), Card("K", "H"))
     hand.add_card(Card("J", "D"))
