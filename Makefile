@@ -22,13 +22,13 @@ format:
 	@poetry run isort -s .cache/ -s dist/ -s .venv/ . --profile black
 
 test:
-	@poetry run pytest --no-header -v
+	@poetry run pytest --no-header -vv
 
 cov:
-	@poetry run pytest --no-header -v --cov . --cov-branch
+	@poetry run pytest --no-header -vv --cov . --cov-branch
 
 cov-html:
-	@poetry run pytest --no-header -v --cov . --cov-branch --cov-report html
+	@poetry run pytest --no-header -vv --cov . --cov-branch --cov-report html
 
 build:
 	@poetry build
