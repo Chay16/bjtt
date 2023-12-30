@@ -88,6 +88,7 @@ def test_soft_totals():
     ace_3 = Hand(Card("A", "H"), Card("3", "H"))
     ace_4 = Hand(Card("A", "H"), Card("4", "H"))
     ace_5 = Hand(Card("A", "H"), Card("5", "H"))
+    ace_5_double = Hand(Card("A", "H"), Card("2", "H"), Card("3", "H"))
     ace_6 = Hand(Card("A", "H"), Card("6", "H"))
     ace_7 = Hand(Card("A", "H"), Card("7", "H"))
     ace_8 = Hand(Card("A", "H"), Card("8", "H"))
@@ -124,6 +125,8 @@ def test_soft_totals():
         if 4 <= dealer_upcard.value <= 6:
             assert strategy(ace_5, dealer_upcard, double=True) == "D"
             assert strategy(ace_5, dealer_upcard, double=False) == "H"
+            assert strategy(ace_5_double, dealer_upcard, double=True) == "D"
+            assert strategy(ace_5_double, dealer_upcard, double=False) == "H"
             assert strategy(ace_4, dealer_upcard, double=True) == "D"
             assert strategy(ace_4, dealer_upcard, double=False) == "H"
 

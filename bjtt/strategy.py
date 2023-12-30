@@ -41,28 +41,29 @@ def strategy_soft_totals(
         raise ValueError(f"{player_hand} does not contains one Ace")
     if player_hand.value == 21:
         return "S"
-    cards_rank = list(filter(("A").__ne__, [card.rank for card in player_hand.cards]))
-    if "9" in cards_rank:
+    value = player_hand.value - 11
+    if value == 9:
         return "S"
-    if "8" in cards_rank:
+    if value == 8:
+        print(double)
         if dealer_upcard.value == 6 and double:
             return "D"
         else:
             return "S"
-    if "7" in cards_rank:
+    if value == 7:
         if dealer_upcard.value >= 9:
             return "H"
         elif dealer_upcard.value <= 6 and double:
             return "D"
         else:
             return "S"
-    if "6" in cards_rank:
+    if value == 6:
         if 3 <= dealer_upcard.value <= 6 and double:
             return "D"
-    if "5" in cards_rank or "4" in cards_rank:
+    if value in [4, 5]:
         if 4 <= dealer_upcard.value <= 6 and double:
             return "D"
-    if "3" in cards_rank or "2" in cards_rank:
+    if value in [2, 3]:
         if 5 <= dealer_upcard.value <= 6 and double:
             return "D"
     return "H"
@@ -123,12 +124,9 @@ def strategy_late_surrender(player_hand: Hand, dealer_upcard: Card) -> bool:
 def strategy(
     player_hand: Hand,
     dealer_upcard: Card,
-    double: Optional[bool] = True,
-    das: Optional[bool] = True,
+    double: Optional[bool] = True
 ) -> str:
-    if player_hand.split_available:
-        return strategy_pair_splitting(player_hand, dealer_upcard, das)
-    if "A" in [card.rank for card in player_hand.cards]:
+    if player_hand.soft:
         return strategy_soft_totals(player_hand, dealer_upcard, double)
     else:
         return strategy_hard_totals(player_hand, dealer_upcard, double)

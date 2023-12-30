@@ -18,6 +18,18 @@ def test_hand():
     assert hand.value == 14
 
 
+def test_compute_value():
+    hand_14 = Hand(Card("A", "H"), Card("3", "H"))
+    assert hand_14.value == 14 and hand_14.soft is True
+    hand_14 = Hand(Card("K", "H"), Card("4", "H"))
+    assert hand_14.value == 14 and hand_14.soft is False
+    hand_15 = Hand(Card("A", "H"), Card("A", "D"), Card("3", "H"))
+    assert hand_15.value == 15 and hand_15.soft is True
+    hand_16 = Hand(Card("A", "H"), Card("2", "D"), Card("3", "H"))
+    assert hand_16.value == 16 and hand_16.soft is True
+    hand_12 = Hand(Card("A", "H"), Card("9", "D"), Card("2", "H"))
+    assert hand_12.value == 12 and hand_12.soft is False
+
 def test_add_card_to_hand():
     hand = Hand(Card("2", "H"), Card("K", "H"))
     hand.add_card(Card("J", "D"))
